@@ -1,6 +1,6 @@
 ﻿namespace APIControleDeProcessos.Enum
 {
-    public enum Process
+    public enum ProcessEnum
     {
         Corte,
         Usinagem,
