@@ -6,6 +6,7 @@ namespace APIControleDeProcessos.Interface
     {
         Task<List<OrderModel>> GetAllOrders();
         Task<OrderModel> GetOrderByNumber(int number);
+        Task<OrderModel> GetOrderByName (string name); 
         Task<List<OrderModel>> CreateOrder (OrderModel newOrder);
         Task<List<OrderModel>> UpdateOrder (OrderModel upOrder);
         Task<List<OrderModel>> DeleteOrder(int number);

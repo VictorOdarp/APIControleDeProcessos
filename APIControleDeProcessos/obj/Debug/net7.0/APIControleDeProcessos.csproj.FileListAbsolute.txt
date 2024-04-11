@@ -1,0 +1,7 @@
+C:\Users\Victo\Desktop\ASP.NET CORE CURSO\APIControleDeProcessos\APIControleDeProcessos\obj\Debug\net7.0\APIControleDeProcessos.csproj.AssemblyReference.cache
+C:\Users\Victo\Desktop\ASP.NET CORE CURSO\APIControleDeProcessos\APIControleDeProcessos\obj\Debug\net7.0\APIControleDeProcessos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Victo\Desktop\ASP.NET CORE CURSO\APIControleDeProcessos\APIControleDeProcessos\obj\Debug\net7.0\APIControleDeProcessos.AssemblyInfoInputs.cache
+C:\Users\Victo\Desktop\ASP.NET CORE CURSO\APIControleDeProcessos\APIControleDeProcessos\obj\Debug\net7.0\APIControleDeProcessos.AssemblyInfo.cs
+C:\Users\Victo\Desktop\ASP.NET CORE CURSO\APIControleDeProcessos\APIControleDeProcessos\obj\Debug\net7.0\APIControleDeProcessos.csproj.CoreCompileInputs.cache
+C:\Users\Victo\Desktop\ASP.NET CORE CURSO\APIControleDeProcessos\APIControleDeProcessos\obj\Debug\net7.0\APIControleDeProcessos.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Victo\Desktop\ASP.NET CORE CURSO\APIControleDeProcessos\APIControleDeProcessos\obj\Debug\net7.0\APIControleDeProcessos.MvcApplicationPartsAssemblyInfo.cache
