@@ -7,17 +7,7 @@ namespace APIControleDeProcessos.Services
     {
         public Task<List<OrderModel>> GetAllOrders()
         {
-            ServiceResponse<List<OrderModel>> serviceResponse = new ServiceResponse<List<OrderModel>>();
-
-            try
-            {
-                if (serviceResponse.Data.Count == 0)
-                {
-                    serviceResponse.Message = "Nenhum dado encontrado";
-                }
-
-                
-            }
+            throw new NotImplementedException();
         }
 
         public Task<OrderModel> GetOrderByNumber(int number)
