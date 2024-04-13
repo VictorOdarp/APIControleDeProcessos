@@ -1,37 +1,44 @@
-﻿using APIControleDeProcessos.Interface;
+﻿using APIControleDeProcessos.Data;
+using APIControleDeProcessos.Interface;
 using APIControleDeProcessos.Models;
 
 namespace APIControleDeProcessos.Services
 {
     public class ProductService : IProductInterface
     {
+        private readonly APIControleDeProcessosDBContext _context;
 
-        public Task<List<ProductModel>> GetAllProducts()
+        public ProductService(APIControleDeProcessosDBContext context)
+        {
+            _context = context;
+        }
+
+        public Task<ServiceResponse<List<ProductModel>>> GetAllProducts()
         {
             throw new NotImplementedException();
         }
 
-        public Task<ProductModel> GetProductById(int id)
+        public Task<ServiceResponse<ProductModel>> GetProductById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ProductModel> GetProductByName(string name)
+        public Task<ServiceResponse<ProductModel>> GetProductByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<ProductModel>> CreateProduct(ProductModel newProduct)
+        public Task<ServiceResponse<List<ProductModel>>> CreateProduct(ProductModel newProduct)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<ProductModel>> UpdateProduct(ProductModel updateProdut)
+        public Task<ServiceResponse<List<ProductModel>>> UpdateProduct(ProductModel updateProdut)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<ProductModel>> DeleteProduct(int id)
+        public Task<ServiceResponse<List<ProductModel>>> DeleteProduct(int id)
         {
             throw new NotImplementedException();
         }

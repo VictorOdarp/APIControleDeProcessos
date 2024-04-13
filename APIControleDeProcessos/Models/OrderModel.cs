@@ -6,6 +6,7 @@ namespace APIControleDeProcessos.Models
 {
     public class OrderModel
     {
+        [Key]
         public int Number { get; set; }
         public ProductModel Product { get; set; }
         public ProcessEnum Process { get; set; }

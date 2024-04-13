@@ -1,14 +1,15 @@
 ﻿using APIControleDeProcessos.Models;
+using APIControleDeProcessos.Services;
 
 namespace APIControleDeProcessos.Interface
 {
     public interface IOrderInterface
     {
-        Task<List<OrderModel>> GetAllOrders();
-        Task<OrderModel> GetOrderByNumber(int number);
-        Task<OrderModel> GetOrderByName (string name); 
-        Task<List<OrderModel>> CreateOrder (OrderModel newOrder);
-        Task<List<OrderModel>> UpdateOrder (OrderModel upOrder);
-        Task<List<OrderModel>> DeleteOrder(int number);
+        Task<ServiceResponse<List<OrderModel>>> GetAllOrders();
+        Task<ServiceResponse<OrderModel>> GetOrderByNumber(int number);
+        Task<ServiceResponse<OrderModel>> GetOrderByName (string name); 
+        Task<ServiceResponse<List<OrderModel>>> CreateOrder (OrderModel newOrder);
+        Task<ServiceResponse<List<OrderModel>>> UpdateOrder (OrderModel upOrder);
+        Task<ServiceResponse<List<OrderModel>>> DeleteOrder(int number);
      }
 }
