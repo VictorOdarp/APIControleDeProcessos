@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var DefaultConnection = "server=localhost;userid=root;password=895smigol;database=bancoAPI;";
+var DefaultConnection = "server=localhost;userid=root;password=895smigol;database=APIControle;";
 
 builder.Services.AddDbContext<APIControleDeProcessosDBContext>(options =>
 {

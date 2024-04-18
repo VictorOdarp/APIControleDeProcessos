@@ -23,7 +23,7 @@ namespace APIControleDeProcessos.Services
 
             try
             {
-                if (serviceResponse.Data.Count == 0)
+                if (serviceResponse.Data == null)
                 {
                     serviceResponse.Data = null;
                     serviceResponse.Message = "Nenhum dado encontrado!";

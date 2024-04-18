@@ -31,8 +31,8 @@ namespace APIControleDeProcessos.Migrations
                     b.Property<int>("Process")
                         .HasColumnType("int");
 
-                    b.Property<string>("ProductId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
 
                     b.HasKey("Number");
 
@@ -43,8 +43,9 @@ namespace APIControleDeProcessos.Migrations
 
             modelBuilder.Entity("APIControleDeProcessos.Models.ProductModel", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -63,7 +64,9 @@ namespace APIControleDeProcessos.Migrations
                 {
                     b.HasOne("APIControleDeProcessos.Models.ProductModel", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
                 });

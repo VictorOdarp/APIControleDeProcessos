@@ -20,7 +20,7 @@ namespace APIControleDeProcessos.Services
 
             try
             {
-                if(serviceResponse.Data.Count == 0)
+                if(serviceResponse.Data == null)
                 {
                     serviceResponse.Data = null;
                     serviceResponse.Message = "Nenhum dado encontrado!";
@@ -146,7 +146,7 @@ namespace APIControleDeProcessos.Services
                     serviceResponse.Success = false;
                 }
 
-                ProductModel product = await  _context.ProductModels.AsNoTracking().FirstOrDefaultAsync(X => X.Id == updateProdut.Id);
+                ProductModel product = await _context.ProductModels.AsNoTracking().FirstOrDefaultAsync(X => X.Id == updateProdut.Id);
 
                 if (product == null)
                 {
@@ -167,9 +167,40 @@ namespace APIControleDeProcessos.Services
             return serviceResponse;
         }
 
-        public Task<ServiceResponse<List<ProductModel>>> DeleteProduct(int id)
+        public async Task<ServiceResponse<List<ProductModel>>> DeleteProduct(int id)
         {
-            throw new NotImplementedException();
+            ServiceResponse<List<ProductModel>> serviceResponse = new ServiceResponse<List<ProductModel>>();
+
+            try
+            {
+                if (id == null)
+                {
+                    serviceResponse.Data = null;
+                    serviceResponse.Message = "Informar dados!";
+                    serviceResponse.Success = false;
+                }
+
+                ProductModel product = await _context.ProductModels.FirstOrDefaultAsync(X => X.Id == id);
+
+                if (product == null)
+                {
+                    serviceResponse.Data = null;
+                    serviceResponse.Message = "Nenhum dado encontrado!";
+                    serviceResponse.Success = false;
+                }
+
+                _context.Remove(product);
+                _context.SaveChangesAsync();
+
+                serviceResponse.Data = await _context.ProductModels.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Message = ex.Message;
+                serviceResponse.Success = false;
+            }
+
+            return serviceResponse;
         }
 
     }
