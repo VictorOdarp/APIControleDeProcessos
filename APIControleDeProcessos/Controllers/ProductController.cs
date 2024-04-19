@@ -27,14 +27,14 @@ namespace APIControleDeProcessos.Controllers
             return Ok(product);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("ById")]
         public async Task<ActionResult<ServiceResponse<List<ProductModel>>>> GetProductById(int id)
         {
-            var product = _productInterface.GetProductById(id);
+            var product = await _productInterface.GetProductById(id);
             return Ok(product);
         }
 
-        [HttpGet("{name}")]
+        [HttpGet("ByName")]
         public async Task<ActionResult<ServiceResponse<List<ProductModel>>>> GetProductByName(string name)
         {
             var product = await _productInterface.GetProductByName(name);
@@ -45,6 +45,20 @@ namespace APIControleDeProcessos.Controllers
         public async Task<ActionResult<ServiceResponse<List<ProductModel>>>> CreateProduct(ProductModel newProduct)
         {
             var product = await _productInterface.CreateProduct(newProduct);
+            return Ok(product);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<ServiceResponse<List<ProductModel>>>> UpdateProduct(ProductModel upProduct)
+        {
+            var product = await _productInterface.UpdateProduct(upProduct);
+            return Ok(product);
+        }
+
+        [HttpDelete] 
+        public async Task<ActionResult<ServiceResponse<List<ProductModel>>>> DeleteProduct(int id)
+        {
+            var product = await _productInterface.DeleteProduct(id);
             return Ok(product);
         }
     }

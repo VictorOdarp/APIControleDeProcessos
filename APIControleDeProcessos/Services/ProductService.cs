@@ -20,14 +20,15 @@ namespace APIControleDeProcessos.Services
 
             try
             {
-                if(serviceResponse.Data == null)
+               
+                serviceResponse.Data = await _context.ProductModels.ToListAsync();
+                serviceResponse.Message = "Os dados acima foram encontrados!";
+
+                if (serviceResponse.Data.Count == 0)
                 {
-                    serviceResponse.Data = null;
                     serviceResponse.Message = "Nenhum dado encontrado!";
-                    serviceResponse.Success = false;
                 }
 
-                serviceResponse.Data = await _context.ProductModels.ToListAsync();
 
             }catch (Exception ex)
             {
@@ -120,7 +121,7 @@ namespace APIControleDeProcessos.Services
                 }
 
                 _context.Add(newProduct);
-                _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
 
                 serviceResponse.Data = await _context.ProductModels.ToListAsync();
 
@@ -156,7 +157,9 @@ namespace APIControleDeProcessos.Services
                 }
 
                 _context.Update(updateProdut);
-                _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
+
+                serviceResponse.Data = await _context.ProductModels.ToListAsync();
 
             }catch (Exception ex)
             {
@@ -190,9 +193,10 @@ namespace APIControleDeProcessos.Services
                 }
 
                 _context.Remove(product);
-                _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
 
                 serviceResponse.Data = await _context.ProductModels.ToListAsync();
+                serviceResponse.Message = "O Produto " + product.Id + " foi deletado!";
             }
             catch (Exception ex)
             {

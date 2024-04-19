@@ -127,7 +127,7 @@ namespace APIControleDeProcessos.Services
                 }
 
                 _context.Add(newOrder);
-                _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
 
                 serviceResponse.Data = await _context.OrderModels.ToListAsync();
 
@@ -163,7 +163,7 @@ namespace APIControleDeProcessos.Services
                 }
 
                 _context.Update(upOrder);
-                _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
 
                 serviceResponse.Data = await _context.OrderModels.ToListAsync();
 
@@ -199,7 +199,7 @@ namespace APIControleDeProcessos.Services
                 }
 
                 _context.Remove(order);
-                _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
 
                 serviceResponse.Data = await _context.OrderModels.ToListAsync();
 
