@@ -76,7 +76,7 @@ namespace APIControleDeProcessos.Services
 
         }
 
-        public async Task<ServiceResponse<OrderModel>> GetOrderByName(ProductModel product)
+        public async Task<ServiceResponse<OrderModel>> GetOrderByName(string product)
         {
             ServiceResponse<OrderModel> serviceResponse = new ServiceResponse<OrderModel>();
 
@@ -89,12 +89,12 @@ namespace APIControleDeProcessos.Services
                     serviceResponse.Success = false;
                 }
 
-                OrderModel order = await _context.OrderModels.FirstOrDefaultAsync(X => X.Product == product);
+                OrderModel order = await _context.OrderModels.FirstOrDefaultAsync(X => X.Product.Name == product);
 
                 if (order == null)
                 {
                     serviceResponse.Data = null;
-                    serviceResponse.Message = "Produto não encontrado!";
+                    serviceResponse.Message = "Nenhuma ordem com este produto não encontrado!";
                     serviceResponse.Success = false;
                 }
 
