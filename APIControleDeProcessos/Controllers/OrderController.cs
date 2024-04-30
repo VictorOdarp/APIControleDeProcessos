@@ -38,5 +38,25 @@ namespace APIControleDeProcessos.Controllers
             return Ok(order);
         }
 
+        [HttpPost]
+        public async Task<ActionResult<ServiceResponse<List<OrderModel>>>> CreateOrder(OrderModel newOrder)
+        {
+            var order = await _orderInterface.CreateOrder(newOrder);
+            return Ok(order);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<ServiceResponse<List<OrderModel>>>> UpdateModel(OrderModel upOrder)
+        {
+            var order = await _orderInterface.UpdateOrder(upOrder);
+            return Ok(order);
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult<ServiceResponse<List<OrderModel>>>> DeleteOrder(int id)
+        {
+            var order = await _orderInterface.DeleteOrder(id);
+            return Ok(order);
+        }
     }
 }
