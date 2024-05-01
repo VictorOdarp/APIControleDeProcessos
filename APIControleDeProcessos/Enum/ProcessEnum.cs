@@ -1,5 +1,8 @@
-﻿namespace APIControleDeProcessos.Enum
+﻿using System.Text.Json.Serialization;
+
+namespace APIControleDeProcessos.Enum
 {
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum ProcessEnum
     {
         Corte,
