@@ -113,22 +113,39 @@ namespace APIControleDeProcessos.Services
 
         }
 
-        public async Task<ServiceResponse<List<OrderModel>>> CreateOrder(OrderModel newOrder)
+        public async Task<ServiceResponse<List<OrderModel>>> CreateOrder(OrderModel Order)
         {
             ServiceResponse<List<OrderModel>> serviceResponse = new ServiceResponse<List<OrderModel>>();
 
             try
             {
 
-                if (newOrder == null)
+                if (Order == null)
                 {
                     serviceResponse.Data = null;
                     serviceResponse.Message = "Informar dados!";
                     serviceResponse.Success = false;
                 }
 
-                _context.Add(newOrder);
-                await _context.SaveChangesAsync();
+                ProductModel produtoExistente = await _context.ProductModels.FirstOrDefaultAsync(X => X.Id == Order.Product.Id);
+
+                if (produtoExistente != null)
+                {
+                    var novaOrdem = new OrderModel
+                    {
+                        Product = produtoExistente
+                    };
+
+                    _context.Add(novaOrdem);
+                    await _context.SaveChangesAsync();
+                    serviceResponse.Message = "Ordem de produção criada com sucesso!";
+                }
+                else
+                {
+                    serviceResponse.Data = null;
+                    serviceResponse.Message = "Produto não existente";
+                    serviceResponse.Success = false;
+                }
 
                 serviceResponse.Data = await _context.OrderModels.ToListAsync();
 
