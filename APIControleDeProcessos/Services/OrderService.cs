@@ -31,7 +31,7 @@ namespace APIControleDeProcessos.Services
                     serviceResponse.Success = false;
                 }
 
-                serviceResponse.Data = await _context.OrderModels.ToListAsync();
+                serviceResponse.Data = await _context.OrderModels.Include(P => P.Product).ToListAsync();
             }
             catch (Exception ex)
             {
@@ -55,7 +55,7 @@ namespace APIControleDeProcessos.Services
                     serviceResponse.Success = false;
                 }
 
-                OrderModel order = await _context.OrderModels.FirstOrDefaultAsync(X => X.Number == number);
+                OrderModel order = await _context.OrderModels.Include(P => P.Product).FirstOrDefaultAsync(X => X.Number == number);
 
                 if (order == null)
                 {
@@ -90,7 +90,7 @@ namespace APIControleDeProcessos.Services
                     serviceResponse.Success = false;
                 }
 
-                OrderModel order = await _context.OrderModels.FirstOrDefaultAsync(X => X.Product.Name == product);
+                OrderModel order = await _context.OrderModels.Include(P => P.Product).FirstOrDefaultAsync(X => X.Product.Name == product);
 
                 if (order == null)
                 {
@@ -147,9 +147,10 @@ namespace APIControleDeProcessos.Services
                     serviceResponse.Success = false;
                 }
 
-                serviceResponse.Data = await _context.OrderModels.ToListAsync();
+                serviceResponse.Data = await _context.OrderModels.Include(P => P.Product).ToListAsync();
 
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 serviceResponse.Message = ex.Message;
                 serviceResponse.Success = false;
@@ -183,9 +184,10 @@ namespace APIControleDeProcessos.Services
                 _context.Update(upOrder);
                 await _context.SaveChangesAsync();
 
-                serviceResponse.Data = await _context.OrderModels.ToListAsync();
+                serviceResponse.Data = await _context.OrderModels.Include(P => P.Product).ToListAsync();
 
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 serviceResponse.Message = ex.Message;
                 serviceResponse.Success = false;
@@ -219,7 +221,7 @@ namespace APIControleDeProcessos.Services
                 _context.Remove(order);
                 await _context.SaveChangesAsync();
 
-                serviceResponse.Data = await _context.OrderModels.ToListAsync();
+                serviceResponse.Data = await _context.OrderModels.Include(P => P.Product).ToListAsync();
 
             }
             catch (Exception ex)
